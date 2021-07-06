@@ -6,14 +6,16 @@ for (let i = 0; i < numberOfDrumButtons; i++) {
     var buttonInnerHtml = this.innerHTML;
 
     makeSound(buttonInnerHtml);
-    // this function contains a switch case which compares the input to several cases
-    //and if it triggers one of them it plays a sound based on the input
+
+    buttonAnimation(buttonInnerHtml);
   });
 }
 
 // this adds an event listener to the whole document
 document.addEventListener('keydown', function (event) {
   makeSound(event.key);
+
+  buttonAnimation(event.key);
 
   //same thing as above except the sound is placed depending on the button that is clicked
 });
@@ -60,4 +62,14 @@ function makeSound(button) {
     default:
       console.log(buttonInnerHtml);
   }
+}
+
+function buttonAnimation(currentKey) {
+  //here we are pointing toward the class the the button exists in
+  //by concatinating a class selector "." with the key that was pressed
+
+  var activeButton = document.querySelector('.' + currentKey);
+  activeButton.classList.add('pressed');
+  
+  //when adding a class the .pressed selector notation is not neseccary
 }
