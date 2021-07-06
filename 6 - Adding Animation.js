@@ -60,7 +60,7 @@ function makeSound(button) {
       break;
 
     default:
-      console.log(buttonInnerHtml);
+      console.log(button);
   }
 }
 
@@ -69,7 +69,13 @@ function buttonAnimation(currentKey) {
   //by concatinating a class selector "." with the key that was pressed
 
   var activeButton = document.querySelector('.' + currentKey);
-  activeButton.classList.add('pressed');
-  
+  activeButton.classList.toggle('pressed');
+
+  // the setTimeout function takes 2 parameters; the first is the function you want to execute
+  // and the second is the number of ms to wait before executing the code.
+  setTimeout(function () {
+    activeButton.classList.remove('pressed');
+  }, 100);
+
   //when adding a class the .pressed selector notation is not neseccary
 }
